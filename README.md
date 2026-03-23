@@ -1,5 +1,7 @@
 # Stebean — Portfolio Web
 
+<img width="1366" height="639" alt="image" src="https://github.com/user-attachments/assets/19932ef7-f0d9-44bb-b8d6-6171c2817922" />
+
 Este es el código fuente de mi sitio web personal y portafolio profesional, diseñado con una estética moderna, minimalista y de alto rendimiento.
 
 He decidido abrir el código de este proyecto para que la comunidad pueda usarlo como base para sus propios portafolios, aprender de la estructura o simplemente explorar cómo está construido.
