@@ -12,6 +12,24 @@ interface Project {
 }
 
 const projects: Project[] = [
+  {
+    title: "Dovs - Sistema de Gestión de Renta de Alquileres",
+    description: "Sistema de escritorio para control de alquileres, clientes, inventario y cotizaciones",
+    tags: ["Flutter", "Firebase", "Stripe"],
+    href: "https://dovs.vercel.app/#descargar",
+  },
+  {
+    title: "POANAS - Emisora de Radio",
+    description: "Sitio web para transmición de radio y noticias locales de Poanas, Durango.",
+    tags: ["React", "Google Adsense", "APIs"],
+    href: "https://www.poanasradio.com.mx/",
+  },
+  {
+    title: "Landing Page Dovs",
+    description: "Landing page para el sistema de gestión de renta de alquileres Dovs.",
+    tags: ["React", "Vercel", "CSS"],
+    href: "https://dovs.vercel.app/",
+  },
 ];
 
 const ProjectsSection = () => {
