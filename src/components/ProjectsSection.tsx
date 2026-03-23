@@ -12,33 +12,6 @@ interface Project {
 }
 
 const projects: Project[] = [
-  {
-    title: "Proyecto Alpha",
-    description: "Plataforma web para gestión de tareas con enfoque en productividad y colaboración en equipo.",
-    tags: ["React", "TypeScript", "Tailwind"],
-    href: "#",
-    github: "https://github.com/stebeandevart",
-    opensource: true,
-  },
-  {
-    title: "Dashboard Analytics",
-    description: "Panel de control con visualización de datos en tiempo real para métricas de negocio.",
-    tags: ["Next.js", "D3", "PostgreSQL"],
-    href: "#",
-  },
-  {
-    title: "CLI Tools",
-    description: "Conjunto de herramientas de línea de comandos para automatización de flujos de trabajo.",
-    tags: ["Node.js", "TypeScript"],
-    github: "https://github.com/stebeandevart",
-    opensource: true,
-  },
-  {
-    title: "E-commerce API",
-    description: "API REST completa para plataforma de comercio electrónico con procesamiento de pagos.",
-    tags: ["Express", "MongoDB", "Stripe"],
-    href: "#",
-  },
 ];
 
 const ProjectsSection = () => {
@@ -70,61 +43,61 @@ const ProjectsSection = () => {
                   </div>
                 )}
                 <div className="p-6">
-                <div className="flex items-start justify-between gap-4 mb-3">
-                  <h3 className="font-heading font-semibold text-lg">{project.title}</h3>
-                  <div className="flex gap-1.5 shrink-0">
-                    {project.opensource && project.github && (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium
+                  <div className="flex items-start justify-between gap-4 mb-3">
+                    <h3 className="font-heading font-semibold text-lg">{project.title}</h3>
+                    <div className="flex gap-1.5 shrink-0">
+                      {project.opensource && project.github && (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium
                           bg-badge-opensource text-badge-opensource-foreground
                           hover:opacity-90 transition-opacity"
-                      >
-                        <Github size={12} />
-                        Open Source
-                      </a>
-                    )}
-                    {project.href && (
-                      <a
-                        href={project.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`Ver ${project.title}`}
-                        className="p-1.5 rounded-md text-muted-foreground hover:text-foreground transition-colors"
-                      >
-                        <ExternalLink size={16} />
-                      </a>
-                    )}
-                    {project.github && !project.opensource && (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`GitHub de ${project.title}`}
-                        className="p-1.5 rounded-md text-muted-foreground hover:text-foreground transition-colors"
-                      >
-                        <Github size={16} />
-                      </a>
-                    )}
+                        >
+                          <Github size={12} />
+                          Open Source
+                        </a>
+                      )}
+                      {project.href && (
+                        <a
+                          href={project.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`Ver ${project.title}`}
+                          className="p-1.5 rounded-md text-muted-foreground hover:text-foreground transition-colors"
+                        >
+                          <ExternalLink size={16} />
+                        </a>
+                      )}
+                      {project.github && !project.opensource && (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`GitHub de ${project.title}`}
+                          className="p-1.5 rounded-md text-muted-foreground hover:text-foreground transition-colors"
+                        >
+                          <Github size={16} />
+                        </a>
+                      )}
+                    </div>
                   </div>
-                </div>
 
-                <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                  {project.description}
-                </p>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                    {project.description}
+                  </p>
 
-                <div className="flex flex-wrap gap-1.5">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2 py-0.5 text-xs rounded-md bg-secondary text-secondary-foreground"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-2 py-0.5 text-xs rounded-md bg-secondary text-secondary-foreground"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </article>
             </ScrollReveal>
