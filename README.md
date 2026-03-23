@@ -1,10 +1,11 @@
 # Stebean — Portfolio Web
 
-¡Bienvenido a mi rincón digital! Este es el código fuente de mi sitio web personal y portafolio profesional, diseñado con una estética moderna, minimalista y de alto rendimiento.
+Este es el código fuente de mi sitio web personal y portafolio profesional, diseñado con una estética moderna, minimalista y de alto rendimiento.
 
 He decidido abrir el código de este proyecto para que la comunidad pueda usarlo como base para sus propios portafolios, aprender de la estructura o simplemente explorar cómo está construido.
 
-Este es un proyecto en **constante evolución**. Seguiré añadiendo mejoras, nuevas secciones y optimizaciones conforme el diseño web y las herramientas que utilizo sigan avanzando.
+Este es un proyecto en **constante evolución**. Seguiré añadiendo mejoras, nuevas secciones y optimizaciones conforme el diseño web y las herramientas que utilizo sigan avanzando
+
 ---
 
 ## Demo
