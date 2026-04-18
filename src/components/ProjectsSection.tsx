@@ -12,13 +12,13 @@ interface Project {
 }
 
 const projects: Project[] = [
-  {
+  /*{
     title: "Encargoo",
     description: "App movil de gestión de pedidos y encargos diseñado para negocios pequeños o medianos.",
     tags: ["Flutter", "Supabase"],
     github: "https://github.com/stebean/encargoo",
     opensource: true,
-  },
+  },*/
   {
     title: "Dovs - Sistema de Gestión de Renta de Alquileres",
     description: "Sistema de escritorio para control de alquileres, clientes, inventario y cotizaciones",
