@@ -3,6 +3,7 @@ import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "@/hooks/use-theme";
 
 const links = [
+  { label: "Sobre mí", href: "#about" },
   { label: "Proyectos", href: "#projects" },
 ];
 
