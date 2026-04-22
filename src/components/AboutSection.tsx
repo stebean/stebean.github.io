@@ -2,7 +2,7 @@ import ScrollReveal from "./ScrollReveal";
 
 const AboutSection = () => {
     return (
-        <section className="py-24 md:py-32" id="about">
+        <section className="min-h-[100svh] pt-14 snap-start flex items-center bg-secondary/20" id="about">
             <div className="container">
                 <ScrollReveal>
                     <div className="max-w-2xl">

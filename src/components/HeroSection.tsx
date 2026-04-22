@@ -10,7 +10,7 @@ const socials = [
 
 const HeroSection = () => {
   return (
-    <section className="min-h-[85vh] flex items-center">
+    <section className="min-h-[100svh] pt-14 snap-start flex items-center" id="home">
       <div className="container">
         <div className="max-w-2xl space-y-5">
           <motion.h1

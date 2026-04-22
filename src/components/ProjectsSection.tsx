@@ -157,8 +157,8 @@ const ProjectsSection = () => {
                   <div className="flex flex-wrap items-center gap-1.5 mt-auto pt-4">
                     {/* Badge de categoría */}
                     <span className={`px-2 py-0.5 text-xs font-medium rounded-md border ${project.category === "Diseño"
-                        ? "border-accent/30 text-accent bg-accent/5 hover:bg-accent/10"
-                        : "border-emerald-500/30 text-emerald-600 bg-emerald-500/5 hover:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-400/30"
+                      ? "border-accent/30 text-accent bg-accent/5 hover:bg-accent/10"
+                      : "border-emerald-500/30 text-emerald-600 bg-emerald-500/5 hover:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-400/30"
                       }`}>
                       {project.category}
                     </span>
