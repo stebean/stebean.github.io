@@ -21,20 +21,13 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "Refaccionaria ACME — Diseño UI/UX",
-    description:
-      "Propuesta de ecommerce para tienda de refacciones automotrices. Incluye buscador por marca, modelo y año, sistema de puntos, banners promocionales y catálogo de productos.",
-    tags: ["Figma", "UI/UX", "Ecommerce"],
-    category: "Diseño",
-    href: "https://www.figma.com/design/7xrtAOnqBOKsaYM72CN9zK/E-commerce-Refaccionaria?node-id=0-1&t=QKvcmHl6UPzXay2C-1",
-  },
-  {
     title: "Tabletop - Tienda de Juegos de Mesa",
     description:
       "Ecommerce completo desarrollado en Wix para una tienda de juegos de mesa. Incluye catálogo con filtros, sistema de ofertas, carrito de compras y sección de pedidos.",
     tags: ["Wix", "UI/UX", "Tienda Online"],
     category: "Diseño",
     href: "https://21040208.wixsite.com/tabletop",
+    image: "/projects_img/Tabletop.png",
   },
   {
     title: "Dovs - Sistema de Gestión de Renta",
@@ -42,7 +35,7 @@ const projects: Project[] = [
       "Sistema de escritorio para control de alquileres, clientes, inventario y cotizaciones.",
     tags: ["Flutter", "Firebase", "Stripe"],
     category: "Desarrollo",
-    href: "https://dovs.vercel.app/#descargar",
+    href: "https://dovs.vercel.app/",
     image: "/projects_img/Dovs - Gestión de Alquileres.png",
   },
   {
@@ -52,8 +45,8 @@ const projects: Project[] = [
     tags: ["React", "Google Adsense", "APIs"],
     category: "Desarrollo",
     href: "https://www.poanasradio.com.mx/",
+    image: "/projects_img/Poanas Radio - Radio en Vivo de Poanas, Durango.png",
   },
-
 ];
 
 type FilterType = "Todos" | "Desarrollo" | "Diseño";
@@ -126,11 +119,10 @@ const ProjectsSection = () => {
                     key={f}
                     id={`filter-${f.toLowerCase()}`}
                     onClick={() => setFilter(f)}
-                    className={`px-4 py-2 text-sm font-medium rounded-md transition-all ${
-                      filter === f
+                    className={`px-4 py-2 text-sm font-medium rounded-md transition-all ${filter === f
                         ? "bg-background text-foreground shadow-sm"
                         : "text-muted-foreground hover:text-foreground"
-                    }`}
+                      }`}
                   >
                     {f}
                   </button>
