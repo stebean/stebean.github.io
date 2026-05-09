@@ -42,7 +42,6 @@ const HomeSection = () => {
         aria-hidden="true"
         className="absolute top-8 left-8 text-[10px] tracking-[0.3em] uppercase text-muted-foreground/40 font-mono"
       >
-        Portfolio v2
       </span>
       <span
         aria-hidden="true"
