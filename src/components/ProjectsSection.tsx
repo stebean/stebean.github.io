@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { ExternalLink, Github, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
-import type { Variants } from "framer-motion";
 import { usePageContext } from "@/context/PageContext";
 import PageLabel from "@/components/PageLabel";
 import { containerVariants } from "@/lib/animations";
+import ProjectCard from "@/components/ProjectCard";
 
 type ProjectCategory = "Desarrollo" | "Diseño";
 
@@ -43,6 +43,7 @@ const projects: Project[] = [
     tags: ["Flutter", "Firebase", "Stripe"],
     category: "Desarrollo",
     href: "https://dovs.vercel.app/#descargar",
+    image: "/projects_img/Dovs - Gestión de Alquileres.png",
   },
   {
     title: "POANAS - Emisora de Radio",
@@ -52,21 +53,12 @@ const projects: Project[] = [
     category: "Desarrollo",
     href: "https://www.poanasradio.com.mx/",
   },
-  {
-    title: "Landing Page Dovs",
-    description: "Landing page para el sistema de gestión de renta de alquileres Dovs.",
-    tags: ["React", "Vercel", "CSS"],
-    category: "Desarrollo",
-    href: "https://dovs.vercel.app/",
-  },
+
 ];
 
 type FilterType = "Todos" | "Desarrollo" | "Diseño";
 
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as [number,number,number,number] } },
-};
+
 
 const ProjectsSection = () => {
   const [filter, setFilter] = useState<FilterType>("Todos");
@@ -156,88 +148,7 @@ const ProjectsSection = () => {
             key={filter}
           >
             {filteredProjects.map((project) => (
-              <motion.article
-                key={project.title}
-                variants={cardVariants}
-                className="group relative rounded-xl border border-border bg-card overflow-hidden
-                  hover:shadow-lg hover:border-foreground/10 transition-all duration-300 flex flex-col"
-              >
-                {project.image && (
-                  <div className="aspect-video w-full overflow-hidden bg-muted flex-shrink-0">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
-                      loading="lazy"
-                    />
-                  </div>
-                )}
-                <div className="p-6 flex flex-col flex-grow">
-                  <div className="flex items-start justify-between gap-4 mb-3">
-                    <h3 className="font-heading font-semibold text-lg">{project.title}</h3>
-                    <div className="flex gap-1.5 shrink-0">
-                      {project.opensource && project.github && (
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium
-                          bg-badge-opensource text-badge-opensource-foreground hover:opacity-90 transition-opacity"
-                        >
-                          <Github size={12} />
-                          Open Source
-                        </a>
-                      )}
-                      {project.href && (
-                        <a
-                          href={project.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`Ver ${project.title}`}
-                          className="p-1.5 rounded-md text-muted-foreground hover:text-foreground transition-colors"
-                        >
-                          <ExternalLink size={16} />
-                        </a>
-                      )}
-                      {project.github && !project.opensource && (
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`GitHub de ${project.title}`}
-                          className="p-1.5 rounded-md text-muted-foreground hover:text-foreground transition-colors"
-                        >
-                          <Github size={16} />
-                        </a>
-                      )}
-                    </div>
-                  </div>
-
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-4 flex-grow">
-                    {project.description}
-                  </p>
-
-                  <div className="flex flex-wrap items-center gap-1.5 mt-auto pt-4">
-                    <span
-                      className={`px-2 py-0.5 text-xs font-medium rounded-md border ${
-                        project.category === "Diseño"
-                          ? "border-accent/30 text-accent bg-accent/5 hover:bg-accent/10"
-                          : "border-emerald-500/30 text-emerald-600 bg-emerald-500/5 hover:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-400/30"
-                      }`}
-                    >
-                      {project.category}
-                    </span>
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2 py-0.5 text-xs rounded-md bg-secondary text-secondary-foreground"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </motion.article>
+              <ProjectCard key={project.title} project={project} />
             ))}
           </motion.div>
         </div>
