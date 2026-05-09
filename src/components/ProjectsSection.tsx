@@ -47,6 +47,15 @@ const projects: Project[] = [
     href: "https://www.poanasradio.com.mx/",
     image: "/projects_img/Poanas Radio - Radio en Vivo de Poanas, Durango.png",
   },
+  {
+    title: "Blackout Studio — Barbería Urbana Premium",
+    description:
+      "Landing page de alto impacto para una barbería premium con estética oscura y urbana. Diseñada para cautivar desde el primer scroll: tipografía bold, paleta monocromática, secciones de servicios con precios, galería de cortes y CTA para reservaciones. Una identidad visual que respira exclusividad.",
+    tags: ["React", "Tailwind", "Vite", "Vercel"],
+    category: "Diseño",
+    href: "https://blackout-studio.vercel.app/",
+    image: "/projects_img/BLACKOUT STUDIO - Modern Urban Barbershop.png",
+  },
 ];
 
 type FilterType = "Todos" | "Desarrollo" | "Diseño";
