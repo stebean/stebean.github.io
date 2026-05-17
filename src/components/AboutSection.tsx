@@ -4,8 +4,6 @@ import { ArrowLeft } from "lucide-react";
 import PageLabel from "@/components/PageLabel";
 import { pageVariants, itemVariants } from "@/lib/animations";
 
-
-
 const AboutSection = () => {
   const { navigateTo } = usePageContext();
 
@@ -58,9 +56,10 @@ const AboutSection = () => {
         >
           <p>Hola, soy Esteban.</p>
           <p>
-            Desarrollador y diseñador UI/UX de Zacatecas. Me especializo en construir
-            productos digitales que se ven bien y funcionan mejor. He trabajado en apps
-            móviles, sistemas web y tiendas online.
+            Desarrollador web y diseñador UI/UX de Zacatecas. Construyo sitios y aplicaciones web modernos, rápidos y escalables para empresas y marcas.
+          </p>
+          <p>
+            Soy cofundador de DTX Lab — un equipo donde desarrollamos software más completo: apps móviles, de escritorio y productos digitales propios.
           </p>
         </motion.div>
 

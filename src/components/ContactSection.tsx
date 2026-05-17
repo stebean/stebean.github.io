@@ -8,7 +8,7 @@ const contactLinks = [
   { icon: Mail, href: "mailto:estebandesa0@gmail.com", label: "Email", text: "estebandesa0@gmail.com" },
   { icon: Github, href: "https://github.com/stebean", label: "GitHub", text: "@stebean" },
   { icon: Linkedin, href: "https://www.linkedin.com/in/estebandsg/", label: "LinkedIn", text: "estebandsg" },
-  { icon: Instagram, href: "https://www.instagram.com/stebeandevart/", label: "Instagram", text: "@stebeandevart" },
+  { icon: Instagram, href: "https://www.instagram.com/stebean.dev/", label: "Instagram", text: "@stebean.dev" },
 ];
 
 
