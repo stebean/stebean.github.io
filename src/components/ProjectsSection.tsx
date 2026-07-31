@@ -62,7 +62,7 @@ const projects: Project[] = [
       "Sitio web con personalidad propia para Casa Calavera, un bar-cafetería con ambiente único. Cuenta con múltiples menús cada uno con su propia identidad visual, y una galería comunitaria donde los clientes exhiben su arte. Un proyecto de iniciativa personal inspirado en el carácter auténtico del lugar.",
     tags: ["React", "Vite", "Framer Motion", "Tailwind", "Vercel"],
     category: "Diseño",
-    href: "https://casa-calavera-bar.vercel.app/",
+    href: "https://casa-calavera.vercel.app/",
     image: "/projects_img/casa-calavera-bar.png",
   },
 ];
@@ -138,8 +138,8 @@ const ProjectsSection = () => {
                     id={`filter-${f.toLowerCase()}`}
                     onClick={() => setFilter(f)}
                     className={`px-4 py-2 text-sm font-medium rounded-md transition-all ${filter === f
-                        ? "bg-background text-foreground shadow-sm"
-                        : "text-muted-foreground hover:text-foreground"
+                      ? "bg-background text-foreground shadow-sm"
+                      : "text-muted-foreground hover:text-foreground"
                       }`}
                   >
                     {f}
