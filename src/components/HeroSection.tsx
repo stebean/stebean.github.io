@@ -6,7 +6,7 @@ import { containerVariants, itemVariants } from "@/lib/animations";
 const socials = [
   { icon: Github, href: "https://github.com/stebean", label: "GitHub" },
   { icon: Linkedin, href: "https://www.linkedin.com/in/estebandsg/", label: "LinkedIn" },
-  { icon: Instagram, href: "https://www.instagram.com/stebeandevart/", label: "Instagram" },
+  { icon: Instagram, href: "https://www.instagram.com/stebean.dev/", label: "Instagram" },
   { icon: Mail, href: "mailto:estebandesa0@gmail.com", label: "Email" },
 ];
 
