@@ -48,15 +48,6 @@ const projects: Project[] = [
     image: "/projects_img/Poanas Radio - Radio en Vivo de Poanas, Durango.png",
   },
   {
-    title: "Blackout Studio — Barbería Urbana Premium",
-    description:
-      "Landing page de alto impacto para una barbería premium con estética oscura y urbana. Diseñada para cautivar desde el primer scroll: tipografía bold, paleta monocromática, secciones de servicios con precios, galería de cortes y CTA para reservaciones. Una identidad visual que respira exclusividad.",
-    tags: ["React", "Tailwind", "Vite", "Vercel"],
-    category: "Diseño",
-    href: "https://blackout-studio.vercel.app/",
-    image: "/projects_img/BLACKOUT STUDIO - Modern Urban Barbershop.png",
-  },
-  {
     title: "Casa Calavera — Bar & Cafetería",
     description:
       "Sitio web con personalidad propia para Casa Calavera, un bar-cafetería con ambiente único. Cuenta con múltiples menús cada uno con su propia identidad visual, y una galería comunitaria donde los clientes exhiben su arte. Un proyecto de iniciativa personal inspirado en el carácter auténtico del lugar.",
