@@ -1,10 +1,8 @@
 # Stebean — Portfolio Web
 
-<img width="1366" height="639" alt="image" src="https://github.com/user-attachments/assets/19932ef7-f0d9-44bb-b8d6-6171c2817922" />
+<img width="1366" height="620" alt="image" src="https://github.com/user-attachments/assets/c0d183a6-99b7-4405-a089-4d4b3bb77945" />
 
-Este es el código fuente de mi sitio web personal y portafolio profesional, diseñado con una estética moderna, minimalista y de alto rendimiento.
-
-He decidido abrir el código de este proyecto para que la comunidad pueda usarlo como base para sus propios portafolios, aprender de la estructura o simplemente explorar cómo está construido.
+Este es el código fuente de mi portafolio web. He decidido abrir el código de este proyecto para que la comunidad pueda usarlo como base para sus propios portafolios, aprender de la estructura o simplemente explorar cómo está construido.
 
 Este es un proyecto en **constante evolución**. Seguiré añadiendo mejoras, nuevas secciones y optimizaciones conforme el diseño web y las herramientas que utilizo sigan avanzando
 
@@ -18,7 +16,6 @@ Puedes ver el sitio en vivo en: **[stebean.github.io](https://stebean.github.io/
 ## Características Principales
 - **Diseño Moderno:** Inspirado en tendencias minimalistas con tipografía 'Space Grotesk'.
 - **Interacciones Fluidas:** Micro-animaciones suaves usando `framer-motion`.
-- **Efecto Reveal en el Footer:** Un efecto de scroll único para una despedida memorable.
 - **Componentes de Shadcn UI:** UI consistente y accesible construida sobre Radix UI.
 - **Modo Oscuro Integrado:** Soporte nativo para temas claros y oscuros.
 - **Optimizado para SEO:** Estructura semántica y metadatos listos.
