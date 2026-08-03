@@ -1,20 +1,21 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Instagram, ArrowLeft } from "lucide-react";
 import { usePageContext } from "@/context/PageContext";
+import { useLang } from "@/context/LangContext";
 import PageLabel from "@/components/PageLabel";
 import { containerVariants, itemVariants } from "@/lib/animations";
 
 const contactLinks = [
-  { icon: Mail, href: "mailto:estebandesa0@gmail.com", label: "Email", text: "estebandesa0@gmail.com" },
-  { icon: Github, href: "https://github.com/stebean", label: "GitHub", text: "@stebean" },
-  { icon: Linkedin, href: "https://www.linkedin.com/in/estebandsg/", label: "LinkedIn", text: "estebandsg" },
-  { icon: Instagram, href: "https://www.instagram.com/stebean.dev/", label: "Instagram", text: "@stebean.dev" },
+  { icon: Mail,      href: "mailto:estebandesa0@gmail.com",                   label: "Email",     text: "estebandesa0@gmail.com" },
+  { icon: Github,    href: "https://github.com/stebean",                      label: "GitHub",    text: "@stebean" },
+  { icon: Linkedin,  href: "https://www.linkedin.com/in/estebandsg/",         label: "LinkedIn",  text: "estebandsg" },
+  { icon: Instagram, href: "https://www.instagram.com/stebean.dev/",          label: "Instagram", text: "@stebean.dev" },
 ];
-
-
 
 const ContactSection = () => {
   const { navigateTo } = usePageContext();
+  const { t } = useLang();
+  const c = t.contact;
 
   return (
     <section
@@ -32,7 +33,7 @@ const ContactSection = () => {
         }}
       />
 
-      <PageLabel label="03 / Contacto" />
+      <PageLabel label={c.pageLabel} />
 
       <motion.div
         className="w-full max-w-lg px-6 md:px-10 space-y-10 text-center"
@@ -51,15 +52,14 @@ const ContactSection = () => {
               size={16}
               className="group-hover:-translate-x-1 transition-transform duration-200"
             />
-            Volver
+            {c.back}
           </button>
 
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold tracking-tight mb-3">
-            Hablemos
+            {c.heading}
           </h2>
           <p className="text-muted-foreground leading-relaxed">
-            ¿Tienes un proyecto en mente o simplemente quieres saludar?
-            Estoy abierto a conversaciones, colaboraciones y oportunidades.
+            {c.subtitle}
           </p>
         </motion.div>
 

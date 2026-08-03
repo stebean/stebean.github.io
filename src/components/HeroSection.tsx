@@ -1,25 +1,26 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Instagram } from "lucide-react";
 import { usePageContext, PageId } from "@/context/PageContext";
+import { useLang } from "@/context/LangContext";
 import { containerVariants, itemVariants } from "@/lib/animations";
 
 const socials = [
-  { icon: Github, href: "https://github.com/stebean", label: "GitHub" },
-  { icon: Linkedin, href: "https://www.linkedin.com/in/estebandsg/", label: "LinkedIn" },
-  { icon: Instagram, href: "https://www.instagram.com/stebean.dev/", label: "Instagram" },
-  { icon: Mail, href: "mailto:estebandesa0@gmail.com", label: "Email" },
+  { icon: Github,    href: "https://github.com/stebean",                      label: "GitHub" },
+  { icon: Linkedin,  href: "https://www.linkedin.com/in/estebandsg/",         label: "LinkedIn" },
+  { icon: Instagram, href: "https://www.instagram.com/stebean.dev/",          label: "Instagram" },
+  { icon: Mail,      href: "mailto:estebandesa0@gmail.com",                   label: "Email" },
 ];
 
-const navItems: { label: string; page: PageId; num: string }[] = [
-  { label: "Sobre mí", page: "about", num: "01" },
-  { label: "Proyectos", page: "projects", num: "02" },
-  { label: "Contacto", page: "contact", num: "03" },
-];
-
-
+const PAGE_IDS: PageId[] = ["about", "projects", "contact"];
 
 const HomeSection = () => {
   const { navigateTo } = usePageContext();
+  const { t } = useLang();
+
+  const navItems = t.hero.nav.map((item, i) => ({
+    ...item,
+    page: PAGE_IDS[i],
+  }));
 
   return (
     <section
@@ -65,7 +66,7 @@ const HomeSection = () => {
             <span className="text-accent">de Santiago</span>
           </h1>
           <p className="text-muted-foreground text-base sm:text-lg font-heading tracking-wide">
-            Product Developer — Diseño &amp; Código
+            {t.hero.subtitle}
           </p>
         </motion.div>
 
@@ -73,7 +74,7 @@ const HomeSection = () => {
         <motion.nav
           variants={itemVariants}
           className="flex flex-col sm:flex-row items-center gap-3 mt-2"
-          aria-label="Navegación principal"
+          aria-label={t.nav.ariaLabel}
         >
           {navItems.map(({ label, page, num }) => (
             <button

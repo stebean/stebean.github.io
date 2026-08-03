@@ -1,73 +1,70 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
 import { usePageContext } from "@/context/PageContext";
+import { useLang } from "@/context/LangContext";
 import PageLabel from "@/components/PageLabel";
 import { containerVariants } from "@/lib/animations";
 import ProjectCard from "@/components/ProjectCard";
 
-type ProjectCategory = "Desarrollo" | "Diseño";
-
-interface Project {
-  title: string;
-  description: string;
-  tags: string[];
-  category: ProjectCategory;
-  image?: string;
-  href?: string;
-  github?: string;
-  opensource?: boolean;
-}
-
-const projects: Project[] = [
+// Static project metadata (image, href, tags, github) — language-independent
+const projectMeta = [
   {
-    title: "Tabletop - Tienda de Juegos de Mesa",
-    description:
-      "Ecommerce completo desarrollado en Wix para una tienda de juegos de mesa. Incluye catálogo con filtros, sistema de ofertas, carrito de compras y sección de pedidos.",
     tags: ["Wix", "UI/UX", "Tienda Online"],
-    category: "Diseño",
+    category: "Diseño" as const,
     href: "https://21040208.wixsite.com/tabletop",
     image: "/projects_img/Tabletop.png",
   },
   {
-    title: "Dovs - Sistema de Gestión de Renta",
-    description:
-      "Sistema de escritorio para control de alquileres, clientes, inventario y cotizaciones.",
     tags: ["Flutter", "Firebase", "Stripe"],
-    category: "Desarrollo",
+    category: "Desarrollo" as const,
     href: "https://dovs.vercel.app/",
     image: "/projects_img/Dovs - Gestión de Alquileres.png",
   },
   {
-    title: "POANAS - Emisora de Radio",
-    description:
-      "Sitio web para transmisión de radio y noticias locales de Poanas, Durango.",
     tags: ["React", "Google Adsense", "APIs"],
-    category: "Desarrollo",
+    category: "Desarrollo" as const,
     href: "https://www.poanasradio.com.mx/",
     image: "/projects_img/Poanas Radio - Radio en Vivo de Poanas, Durango.png",
   },
   {
-    title: "Casa Calavera — Bar & Cafetería",
-    description:
-      "Sitio web con personalidad propia para Casa Calavera, un bar-cafetería con ambiente único. Cuenta con múltiples menús cada uno con su propia identidad visual, y una galería comunitaria donde los clientes exhiben su arte. Un proyecto de iniciativa personal inspirado en el carácter auténtico del lugar.",
     tags: ["React", "Vite", "Framer Motion", "Tailwind", "Vercel"],
-    category: "Diseño",
+    category: "Diseño" as const,
     href: "https://casa-calavera.vercel.app/",
     image: "/projects_img/casa-calavera-bar.png",
   },
 ];
 
-type FilterType = "Todos" | "Desarrollo" | "Diseño";
-
-
-
 const ProjectsSection = () => {
-  const [filter, setFilter] = useState<FilterType>("Todos");
   const { navigateTo } = usePageContext();
+  const { t, lang } = useLang();
+  const p = t.projects;
+
+  // Filter labels differ per language; map them to category values
+  const filterMap: Record<string, string | "all"> = {
+    [p.filters[0]]: "all",
+    [p.filters[1]]: "Desarrollo",
+    [p.filters[2]]: "Diseño",
+  };
+
+  const [filterLabel, setFilterLabel] = useState(p.filters[0]);
+
+  // Reset to "all" filter when language changes
+  useEffect(() => {
+    setFilterLabel(p.filters[0]);
+  }, [lang]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const activeCategory = filterMap[filterLabel] ?? "all";
+
+  // Merge translated text with static metadata
+  const projects = projectMeta.map((meta, i) => ({
+    ...meta,
+    title: p.items[i].title,
+    description: p.items[i].description,
+  }));
 
   const filteredProjects = projects.filter(
-    (project) => filter === "Todos" || project.category === filter
+    (project) => activeCategory === "all" || project.category === activeCategory
   );
 
   return (
@@ -86,7 +83,7 @@ const ProjectsSection = () => {
         }}
       />
 
-      <PageLabel label="02 / Proyectos" />
+      <PageLabel label={p.pageLabel} />
 
       {/* Scrollable content */}
       <div className="relative z-10 flex flex-col h-full overflow-y-auto">
@@ -108,30 +105,29 @@ const ProjectsSection = () => {
                 size={16}
                 className="group-hover:-translate-x-1 transition-transform duration-200"
               />
-              Volver
+              {p.back}
             </button>
 
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
               <div>
                 <h2 className="text-4xl sm:text-5xl font-heading font-bold tracking-tight mb-2">
-                  Proyectos
+                  {p.heading}
                 </h2>
-                <p className="text-muted-foreground">
-                  Algunos de los proyectos en los que he trabajado.
-                </p>
+                <p className="text-muted-foreground">{p.subtitle}</p>
               </div>
 
               {/* Filter */}
               <div className="flex bg-secondary/50 p-1 rounded-lg border border-border w-max shrink-0">
-                {(["Todos", "Desarrollo", "Diseño"] as FilterType[]).map((f) => (
+                {p.filters.map((f) => (
                   <button
                     key={f}
                     id={`filter-${f.toLowerCase()}`}
-                    onClick={() => setFilter(f)}
-                    className={`px-4 py-2 text-sm font-medium rounded-md transition-all ${filter === f
-                      ? "bg-background text-foreground shadow-sm"
-                      : "text-muted-foreground hover:text-foreground"
-                      }`}
+                    onClick={() => setFilterLabel(f)}
+                    className={`px-4 py-2 text-sm font-medium rounded-md transition-all ${
+                      filterLabel === f
+                        ? "bg-background text-foreground shadow-sm"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
                   >
                     {f}
                   </button>
@@ -146,7 +142,7 @@ const ProjectsSection = () => {
             variants={containerVariants}
             initial="hidden"
             animate="show"
-            key={filter}
+            key={`${filterLabel}-${lang}`}
           >
             {filteredProjects.map((project) => (
               <ProjectCard key={project.title} project={project} />

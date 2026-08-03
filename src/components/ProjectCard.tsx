@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github, X } from "lucide-react";
+import { useLang } from "@/context/LangContext";
 
 interface Project {
   title: string;
@@ -21,6 +22,11 @@ const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
   const [open, setOpen] = useState(false);
+  const { t } = useLang();
+  const p = t.projects;
+
+  // Translate category label
+  const categoryLabel = p.categories[project.category] ?? project.category;
 
   // Toggle body class so Navbar can hide itself while modal is open
   useEffect(() => {
@@ -43,7 +49,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         role="button"
         tabIndex={0}
         onKeyDown={(e) => e.key === "Enter" && setOpen(true)}
-        aria-label={`Ver ${project.title}`}
+        aria-label={`${p.viewProject} ${project.title}`}
       >
         {/* Screenshot preview — browser window */}
         {project.image ? (
@@ -63,7 +69,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
             {/* Screenshot top portion */}
             <img
               src={project.image}
-              alt={`Preview de ${project.title}`}
+              alt={`Preview ${project.title}`}
               className="w-full object-cover object-top group-hover:scale-[1.02] transition-transform duration-500"
               style={{ height: "calc(180px - 28px)", marginTop: 28, objectPosition: "top" }}
               loading="lazy"
@@ -76,7 +82,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
               bg-background/20 backdrop-blur-[2px]">
               <span className="text-xs font-medium bg-background/95 border border-border
                 rounded-full px-4 py-1.5 shadow-lg">
-                Ver más...
+                {p.viewMore}
               </span>
             </div>
           </div>
@@ -91,7 +97,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
               opacity-0 group-hover:opacity-100 transition-opacity duration-200">
               <span className="text-xs font-medium bg-background/95 border border-border
                 rounded-full px-4 py-1.5 shadow-lg">
-                Ver más...
+                {p.viewMore}
               </span>
             </div>
           </div>
@@ -109,7 +115,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                   ? "border-accent/30 text-accent bg-accent/5"
                   : "border-emerald-500/30 text-emerald-600 bg-emerald-500/5 dark:text-emerald-400 dark:border-emerald-400/30"
               }`}>
-                {project.category}
+                {categoryLabel}
               </span>
               {project.tags.slice(0, 2).map((tag) => (
                 <span key={tag} className="px-1.5 py-0.5 text-[10px] rounded bg-secondary text-secondary-foreground">
@@ -126,14 +132,14 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           <div className="flex gap-0.5 shrink-0" onClick={(e) => e.stopPropagation()}>
             {project.href && (
               <a href={project.href} target="_blank" rel="noopener noreferrer"
-                aria-label={`Ver ${project.title}`}
+                aria-label={`${p.viewProject} ${project.title}`}
                 className="p-1.5 rounded-md text-muted-foreground hover:text-foreground transition-colors">
                 <ExternalLink size={14} />
               </a>
             )}
             {project.github && (
               <a href={project.github} target="_blank" rel="noopener noreferrer"
-                aria-label={`GitHub de ${project.title}`}
+                aria-label={`GitHub ${project.title}`}
                 className="p-1.5 rounded-md text-muted-foreground hover:text-foreground transition-colors">
                 <Github size={14} />
               </a>
@@ -180,7 +186,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                 bg-secondary/80 backdrop-blur-sm border-b border-border">
                 <button
                   onClick={() => setOpen(false)}
-                  aria-label="Cerrar"
+                  aria-label={t.shared.close}
                   className="w-3 h-3 rounded-full bg-red-400 hover:bg-red-500 transition-colors group/close relative"
                 >
                   <X size={7} className="absolute inset-0 m-auto opacity-0 group-hover/close:opacity-100 text-red-900" />
@@ -201,7 +207,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
                     className="p-1.5 rounded-md text-muted-foreground hover:text-foreground transition-colors"
-                    aria-label="Abrir en nueva pestaña"
+                    aria-label={t.shared.openInTab}
                   >
                     <ExternalLink size={13} />
                   </a>
@@ -225,7 +231,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
 
                   <div className="space-y-2">
                     <p className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground/50">
-                      Tecnologías
+                      {p.technologies}
                     </p>
                     <div className="flex flex-wrap gap-1.5">
                       <span className={`px-2 py-0.5 text-xs font-medium rounded border ${
@@ -233,7 +239,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                           ? "border-accent/30 text-accent bg-accent/5"
                           : "border-emerald-500/30 text-emerald-600 bg-emerald-500/5 dark:text-emerald-400 dark:border-emerald-400/30"
                       }`}>
-                        {project.category}
+                        {categoryLabel}
                       </span>
                       {project.tags.map((tag) => (
                         <span key={tag} className="px-2 py-0.5 text-xs rounded bg-secondary text-secondary-foreground">
@@ -254,7 +260,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                             hover:text-accent transition-colors"
                         >
                           <ExternalLink size={14} />
-                          Ver proyecto
+                          {p.viewProject}
                         </a>
                       )}
                       {project.github && (
@@ -284,7 +290,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                   </div>
                 ) : (
                   <div className="flex-1 flex items-center justify-center bg-secondary/20 text-muted-foreground text-sm">
-                    Sin preview disponible
+                    {p.noPreview}
                   </div>
                 )}
               </div>

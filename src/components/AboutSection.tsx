@@ -1,11 +1,14 @@
 import { motion } from "framer-motion";
 import { usePageContext } from "@/context/PageContext";
+import { useLang } from "@/context/LangContext";
 import { ArrowLeft } from "lucide-react";
 import PageLabel from "@/components/PageLabel";
 import { pageVariants, itemVariants } from "@/lib/animations";
 
 const AboutSection = () => {
   const { navigateTo } = usePageContext();
+  const { t } = useLang();
+  const a = t.about;
 
   return (
     <section
@@ -23,7 +26,7 @@ const AboutSection = () => {
         }}
       />
 
-      <PageLabel label="01 / Sobre mí" />
+      <PageLabel label={a.pageLabel} />
 
       <motion.div
         className="w-full max-w-2xl px-6 md:px-10 space-y-8"
@@ -42,11 +45,11 @@ const AboutSection = () => {
               size={16}
               className="group-hover:-translate-x-1 transition-transform duration-200"
             />
-            Volver
+            {a.back}
           </button>
 
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold tracking-tight mb-2">
-            Sobre mí
+            {a.heading}
           </h2>
         </motion.div>
 
@@ -54,13 +57,9 @@ const AboutSection = () => {
           variants={itemVariants}
           className="text-muted-foreground text-lg leading-relaxed space-y-4"
         >
-          <p>Hola, soy Esteban.</p>
-          <p>
-            Desarrollador web y diseñador UI/UX de Zacatecas. Construyo sitios y aplicaciones web modernos, rápidos y escalables para empresas y marcas.
-          </p>
-          <p>
-            Soy cofundador de DTX Lab — un equipo donde desarrollamos software más completo: apps móviles, de escritorio y productos digitales propios.
-          </p>
+          {a.paragraphs.map((p, i) => (
+            <p key={i}>{p}</p>
+          ))}
         </motion.div>
 
         <motion.div variants={itemVariants} className="flex flex-wrap gap-3 pt-2">

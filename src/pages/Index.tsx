@@ -3,6 +3,7 @@ import "@fontsource/space-grotesk/500.css";
 import "@fontsource/space-grotesk/600.css";
 import "@fontsource/space-grotesk/700.css";
 import { PageProvider, usePageContext } from "@/context/PageContext";
+import { LangProvider } from "@/context/LangContext";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
@@ -32,9 +33,11 @@ const PageContent = () => {
 
 const Index = () => {
   return (
-    <PageProvider>
-      <PageContent />
-    </PageProvider>
+    <LangProvider>
+      <PageProvider>
+        <PageContent />
+      </PageProvider>
+    </LangProvider>
   );
 };
 
