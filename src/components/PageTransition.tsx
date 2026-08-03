@@ -60,7 +60,7 @@ const PageTransition = () => {
             style={{
               flex: 1,
               height: "100%",
-              background: "hsl(30 8% 6%)",
+              background: "hsl(var(--background))",
               transform: `translateY(${translateY})`,
               transition,
               willChange: "transform",
