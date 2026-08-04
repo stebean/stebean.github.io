@@ -45,11 +45,6 @@ export const translations = {
       // project data
       items: [
         {
-          title: "Tabletop - Tienda de Juegos de Mesa",
-          description:
-            "Ecommerce completo desarrollado en Wix para una tienda de juegos de mesa. Incluye catálogo con filtros, sistema de ofertas, carrito de compras y sección de pedidos.",
-        },
-        {
           title: "Dovs - Sistema de Gestión de Renta",
           description:
             "Sistema de escritorio para control de alquileres, clientes, inventario y cotizaciones.",
@@ -122,11 +117,6 @@ export const translations = {
       viewProject: "View project",
       categories: { Desarrollo: "Development", Diseño: "Design" },
       items: [
-        {
-          title: "Tabletop - Board Game Store",
-          description:
-            "Full ecommerce built in Wix for a board game store. Includes a filtered catalog, deals system, shopping cart, and orders section.",
-        },
         {
           title: "Dovs - Rental Management System",
           description:

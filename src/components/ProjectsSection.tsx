@@ -10,12 +10,6 @@ import ProjectCard from "@/components/ProjectCard";
 // Static project metadata (image, href, tags, github) — language-independent
 const projectMeta = [
   {
-    tags: ["Wix", "UI/UX", "Tienda Online"],
-    category: "Diseño" as const,
-    href: "https://21040208.wixsite.com/tabletop",
-    image: "/projects_img/Tabletop.png",
-  },
-  {
     tags: ["Flutter", "Firebase", "Stripe"],
     category: "Desarrollo" as const,
     href: "https://dovs.vercel.app/",
