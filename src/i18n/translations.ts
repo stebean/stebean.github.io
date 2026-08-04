@@ -150,4 +150,4 @@ export const translations = {
   },
 } satisfies Record<Lang, object>;
 
-export type Translations = typeof translations.es;
+export type Translations = typeof translations[Lang];

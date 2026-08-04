@@ -6,6 +6,39 @@
   <link rel="icon" type="image/png" href="/image.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- ============================================================ -->
+  <!-- Security Headers (meta-tag equivalents for GitHub Pages)     -->
+  <!-- ============================================================ -->
+
+  <!-- Content-Security-Policy -->
+  <meta http-equiv="Content-Security-Policy"
+    content="
+      default-src 'self';
+      script-src  'self' 'unsafe-inline' https://www.googletagmanager.com;
+      style-src   'self' 'unsafe-inline' https://fonts.googleapis.com;
+      font-src    'self' https://fonts.gstatic.com;
+      img-src     'self' data: blob: https:;
+      media-src   'self' https:;
+      connect-src 'self' https:;
+      frame-src   'none';
+      object-src  'none';
+      base-uri    'self';
+      form-action 'self';
+    " />
+
+  <!-- X-Content-Type-Options (prevents MIME-sniffing) -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+
+  <!-- X-Frame-Options (prevents clickjacking) -->
+  <meta http-equiv="X-Frame-Options" content="DENY" />
+
+  <!-- Referrer-Policy -->
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Permissions-Policy (restricts sensitive browser features) -->
+  <meta http-equiv="Permissions-Policy"
+    content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()" />
+
   <!-- Primary SEO -->
   <title>Esteban de Santiago — Desarrollador Web & UI/UX | Stebean</title>
   <meta name="description"
