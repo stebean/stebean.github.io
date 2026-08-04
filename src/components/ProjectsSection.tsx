@@ -13,19 +13,19 @@ const projectMeta = [
     tags: ["Flutter", "Firebase", "Stripe"],
     category: "Desarrollo" as const,
     href: "https://dovs.vercel.app/",
-    image: "/projects_img/Dovs - Gestión de Alquileres.png",
+    image: "/projects_img/Dovs - Gestión de Alquileres.webp",
   },
   {
     tags: ["React", "Google Adsense", "APIs"],
     category: "Desarrollo" as const,
     href: "https://www.poanasradio.com.mx/",
-    image: "/projects_img/Poanas Radio - Radio en Vivo de Poanas, Durango.png",
+    image: "/projects_img/Poanas Radio - Radio en Vivo de Poanas, Durango.webp",
   },
   {
     tags: ["React", "Vite", "Framer Motion", "Tailwind", "Vercel"],
     category: "Diseño" as const,
     href: "https://casa-calavera.vercel.app/",
-    image: "/projects_img/casa-calavera-bar.png",
+    image: "/projects_img/casa-calavera-bar.webp",
   },
 ];
 
@@ -41,7 +41,7 @@ const ProjectsSection = () => {
     [p.filters[2]]: "Diseño",
   };
 
-  const [filterLabel, setFilterLabel] = useState(p.filters[0]);
+  const [filterLabel, setFilterLabel] = useState<(typeof p.filters)[number]>(p.filters[0]);
 
   // Reset to "all" filter when language changes
   useEffect(() => {
@@ -117,11 +117,10 @@ const ProjectsSection = () => {
                     key={f}
                     id={`filter-${f.toLowerCase()}`}
                     onClick={() => setFilterLabel(f)}
-                    className={`px-4 py-2 text-sm font-medium rounded-md transition-all ${
-                      filterLabel === f
+                    className={`px-4 py-2 text-sm font-medium rounded-md transition-all ${filterLabel === f
                         ? "bg-background text-foreground shadow-sm"
                         : "text-muted-foreground hover:text-foreground"
-                    }`}
+                      }`}
                   >
                     {f}
                   </button>
