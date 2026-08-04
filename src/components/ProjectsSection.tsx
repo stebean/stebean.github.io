@@ -13,13 +13,13 @@ const projectMeta = [
     tags: ["Flutter", "Firebase", "Stripe"],
     category: "Desarrollo" as const,
     href: "https://dovs.vercel.app/",
-    image: "/projects_img/Dovs - Gestión de Alquileres.webp",
+    image: "/projects_img/Dovs-Gestión-de-Alquileres.webp",
   },
   {
     tags: ["React", "Google Adsense", "APIs"],
     category: "Desarrollo" as const,
     href: "https://www.poanasradio.com.mx/",
-    image: "/projects_img/Poanas Radio - Radio en Vivo de Poanas, Durango.webp",
+    image: "/projects_img/Poanas-Radio-Radio-en-Vivo-de-Poanas_-Durango.webp",
   },
   {
     tags: ["React", "Vite", "Framer Motion", "Tailwind", "Vercel"],
@@ -118,8 +118,8 @@ const ProjectsSection = () => {
                     id={`filter-${f.toLowerCase()}`}
                     onClick={() => setFilterLabel(f)}
                     className={`px-4 py-2 text-sm font-medium rounded-md transition-all ${filterLabel === f
-                        ? "bg-background text-foreground shadow-sm"
-                        : "text-muted-foreground hover:text-foreground"
+                      ? "bg-background text-foreground shadow-sm"
+                      : "text-muted-foreground hover:text-foreground"
                       }`}
                   >
                     {f}
