@@ -1,15 +1,17 @@
-import { memo, useEffect, useRef } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { liquidOutline, type LiquidDrop } from "@/lib/liquid-outline";
 
 type Particle = LiquidDrop & { born: number; vx: number; vy: number; life: number; seed: number };
 
 function BeneathCursor() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
   const lensRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const lens = lensRef.current, ring = ringRef.current;
-    if (!lens || !ring) return;
+    if (!mounted || !lens || !ring) return;
     const pointer = window.matchMedia("(hover: hover) and (pointer: fine)");
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     let enabled = false, visible = false, frame = 0;
@@ -120,7 +122,8 @@ function BeneathCursor() {
       document.documentElement.removeEventListener("pointerleave",leave); window.removeEventListener("blur",hide);
       document.removeEventListener("visibilitychange",visibility);
     };
-  },[]);
+  },[mounted]);
+  if (!mounted) return null;
   return createPortal(<><div ref={lensRef} className="beneath-cursor" aria-hidden="true" /><div ref={ringRef} className="fluid-pointer-ring" aria-hidden="true" /></>,document.body);
 }
 

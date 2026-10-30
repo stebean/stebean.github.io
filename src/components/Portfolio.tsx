@@ -72,22 +72,21 @@ function ProjectList() {
           </AnimatePresence>
         </div>
         <div id={`${id}-panel`} role="region" aria-labelledby={`${id}-trigger`}>
-          <AnimatePresence initial={false}>
-            {expanded && <motion.div key="details" className="project-panel-clip"
-              initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }} transition={{ duration, ease: "easeInOut" }}>
+          <motion.div className="project-panel-clip" initial={false}
+              animate={{ height: expanded ? "auto" : 0, opacity: expanded ? 1 : 0 }}
+              aria-hidden={!expanded} {...{ inert: expanded ? undefined : "" }}
+              transition={{ duration, ease: "easeInOut" }}>
               <div className="project-panel">
-                <motion.img className="project-mobile-preview" src={project.image} alt={`${lang === "es" ? "Captura de" : "Screenshot of"} ${project.name}`}
+                <motion.img className="project-mobile-preview" loading="lazy" decoding="async" src={project.image} alt={`${lang === "es" ? "Captura de" : "Screenshot of"} ${project.name}`}
                   initial={{ objectPosition: "50% 0%" }}
-                  animate={{ objectPosition: reduced ? "50% 0%" : ["50% 0%", "50% 100%"] }}
-                  transition={{ duration: reduced ? 0 : 12, ease: "easeInOut", repeat: reduced ? 0 : Infinity, repeatType: "reverse", repeatDelay: reduced ? 0 : 1 }} />
+                  animate={{ objectPosition: reduced || !expanded ? "50% 0%" : ["50% 0%", "50% 100%"] }}
+                  transition={{ duration: reduced ? 0 : 12, ease: "easeInOut", repeat: reduced || !expanded ? 0 : Infinity, repeatType: "reverse", repeatDelay: reduced ? 0 : 1 }} />
                 <p>{t.projects.items[project.index].description}</p>
                 <div className="project-panel-meta"><span className="eyebrow">{t.projects.technologies}</span><p>{project.stack}</p>
                   <a href={project.href} target="_blank" rel="noopener noreferrer">{lang === "es" ? "Visitar" : "Visit"} <ArrowUpRight size={19} /></a>
                 </div>
               </div>
-            </motion.div>}
-          </AnimatePresence>
+          </motion.div>
         </div>
       </article>;
     })}
@@ -157,7 +156,7 @@ export default function Portfolio() {
     <motion.header className="site-header" initial={reduced ? false : { opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduced ? 0 : 0.65, delay: reduced ? 0 : 0.08, ease: [0.22, 1, 0.36, 1] }}><a className="wordmark" href="#home" aria-label={t.nav.goHome}><img className="illustrated-logo" src="/image.png" alt="Esteban de Santiago" /></a><div className="header-controls"><button onClick={toggle} aria-label={t.nav.toggleLang}>{lang.toUpperCase()} <span>↓</span></button></div></motion.header>
     <main>
       <section ref={sceneRef} id="home" className={`hero-scene ${reduced ? "hero-scene-static" : ""}`}>
-        <h1 className="sr-only">stebean — Esteban de Santiago</h1>
+        <h1 className="sr-only">{en ? "Esteban de Santiago (Stebean), web developer and UI/UX designer in Zacatecas" : "Esteban de Santiago (Stebean), desarrollador web y diseñador UI/UX en Zacatecas"}</h1>
         <div className="hero-stage">
           <motion.svg className="brand-vector" viewBox={viewBox} style={{ visibility: reduced ? "visible" : vectorVisibility }} aria-hidden="true" preserveAspectRatio="none">
             <rect x="-100000" y="-100000" width="200000" height="200000" fill="var(--paper)" />

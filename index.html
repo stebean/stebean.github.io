@@ -1,8 +1,10 @@
 <!doctype html>
-<html lang="es" class="scroll-smooth snap-y snap-proximity">
+<html lang="es" class="scroll-smooth">
 
 <head>
   <meta charset="UTF-8" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="icon" type="image/png" href="/image.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -40,19 +42,14 @@
     content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()" />
 
   <!-- Primary SEO -->
-  <title>Esteban de Santiago — Desarrollador Web & UI/UX | Stebean</title>
+  <title>Stebean | Esteban de Santiago · Desarrollo web y diseño UI/UX</title>
   <meta name="description"
-    content="Portfolio de Esteban de Santiago (Stebean). Desarrollador web y diseñador UI/UX de Zacatecas, México. Especializado en React, Flutter y productos digitales modernos." />
+    content="Esteban de Santiago (Stebean), desarrollador web y diseñador UI/UX en Zacatecas, México. Conoce sus proyectos de sitios web, aplicaciones y productos digitales." />
   <meta name="author" content="Esteban de Santiago" />
-  <meta name="keywords"
-    content="Esteban de Santiago, Stebean, desarrollador web Zacatecas, web developer Mexico, portfolio, React, Flutter, UI/UX, Firebase, TypeScript, DTX Lab, frontend developer" />
-  <meta name="robots" content="index, follow" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
 
-  <!-- Canonical & hreflang (for bilingual content) -->
+  <!-- One canonical URL; language is switched on the same page. -->
   <link rel="canonical" href="https://stebean.github.io/" />
-  <link rel="alternate" hreflang="es" href="https://stebean.github.io/" />
-  <link rel="alternate" hreflang="en" href="https://stebean.github.io/" />
-  <link rel="alternate" hreflang="x-default" href="https://stebean.github.io/" />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
@@ -61,49 +58,151 @@
   <meta property="og:description"
     content="Portfolio de Esteban de Santiago. Desarrollador web y diseñador UI/UX de Zacatecas, México. Proyectos en React, Flutter y más." />
   <meta property="og:image" content="https://stebean.github.io/image.png" />
+  <meta property="og:image:width" content="400" />
+  <meta property="og:image:height" content="400" />
+  <meta property="og:image:alt" content="Logo ilustrado de Stebean, Esteban de Santiago" />
   <meta property="og:locale" content="es_MX" />
-  <meta property="og:locale:alternate" content="en_US" />
   <meta property="og:site_name" content="Stebean Portfolio" />
 
   <!-- Twitter / X -->
-  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:card" content="summary" />
   <meta name="twitter:url" content="https://stebean.github.io/" />
   <meta name="twitter:title" content="Esteban de Santiago — Desarrollador Web & UI/UX" />
   <meta name="twitter:description"
     content="Portfolio de Esteban de Santiago. Desarrollador web y diseñador UI/UX de Zacatecas, México." />
   <meta name="twitter:image" content="https://stebean.github.io/image.png" />
-  <meta name="twitter:creator" content="@stebean" />
+  <meta name="twitter:image:alt" content="Logo ilustrado de Stebean, Esteban de Santiago" />
 
-  <!-- JSON-LD structured data (Google rich results) -->
+  <!-- Structured identity and portfolio data, matching the visible content. -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Esteban de Santiago",
-    "alternateName": "Stebean",
-    "url": "https://stebean.github.io/",
-    "image": "https://stebean.github.io/image.png",
-    "jobTitle": "Web Developer & UI/UX Designer",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "DTX Lab"
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://stebean.github.io/#person",
+      "name": "Esteban de Santiago",
+      "alternateName": "Stebean",
+      "url": "https://stebean.github.io/",
+      "image": "https://stebean.github.io/image.png",
+      "jobTitle": "Desarrollador web y diseñador UI/UX",
+      "description": "Desarrollador web y diseñador UI/UX de Zacatecas, México. Cofundador de DTX Lab.",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "DTX Lab"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Zacatecas",
+        "addressCountry": "MX"
+      },
+      "sameAs": [
+        "https://github.com/stebean",
+        "https://www.linkedin.com/in/estebandsg/",
+        "https://www.instagram.com/stebean.dev/"
+      ],
+      "knowsAbout": [
+        "Desarrollo web",
+        "Diseño UI/UX",
+        "React",
+        "Flutter",
+        "Firebase",
+        "TypeScript"
+      ]
     },
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Zacatecas",
-      "addressCountry": "MX"
+    {
+      "@type": "WebSite",
+      "@id": "https://stebean.github.io/#website",
+      "url": "https://stebean.github.io/",
+      "name": "Stebean",
+      "alternateName": "Esteban de Santiago",
+      "inLanguage": [
+        "es-MX",
+        "en"
+      ],
+      "publisher": {
+        "@id": "https://stebean.github.io/#person"
+      }
     },
-    "sameAs": [
-      "https://github.com/stebean",
-      "https://www.linkedin.com/in/estebandsg/",
-      "https://www.instagram.com/stebean.dev/"
-    ],
-    "knowsAbout": ["React", "Flutter", "UI/UX Design", "Firebase", "TypeScript", "Figma"]
-  }
+    {
+      "@type": "ProfilePage",
+      "@id": "https://stebean.github.io/#webpage",
+      "url": "https://stebean.github.io/",
+      "name": "Esteban de Santiago — Portfolio de desarrollo web y diseño UI/UX",
+      "isPartOf": {
+        "@id": "https://stebean.github.io/#website"
+      },
+      "mainEntity": {
+        "@id": "https://stebean.github.io/#person"
+      },
+      "about": {
+        "@id": "https://stebean.github.io/#person"
+      },
+      "hasPart": {
+        "@id": "https://stebean.github.io/#portfolio"
+      }
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://stebean.github.io/#portfolio",
+      "name": "Proyectos de Esteban de Santiago",
+      "numberOfItems": 3,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "Casa Calavera — Bar & Cafetería",
+            "url": "https://casa-calavera.vercel.app/",
+            "description": "Sitio web con menús de identidad visual propia y galería comunitaria para Casa Calavera.",
+            "creator": {
+              "@id": "https://stebean.github.io/#person"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "Dovs — Sistema de Gestión de Renta",
+            "url": "https://dovs.vercel.app/",
+            "description": "Sistema de escritorio para control de alquileres, clientes, inventario y cotizaciones.",
+            "creator": {
+              "@id": "https://stebean.github.io/#person"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "Poanas Radio",
+            "url": "https://www.poanasradio.com.mx/",
+            "description": "Sitio web para transmisión de radio y noticias locales de Poanas, Durango.",
+            "creator": {
+              "@id": "https://stebean.github.io/#person"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
   </script>
 </head>
 
 <body>
+  <noscript><style>
+    .portfolio [style*="opacity"]{opacity:1!important}
+    .brand-vector,.hero-arrival,.project-doodle{display:none!important}
+    .hero-scene,.hero-stage{height:auto!important;position:relative!important}
+    .hero-scene .hero{height:100svh!important;visibility:visible!important}
+    .hero .brand-title{visibility:visible!important}
+    .project-panel-clip{height:0!important;overflow:hidden!important}
+  </style></noscript>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
 </body>

@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { Lang, translations, Translations } from "@/i18n/translations";
 
 /** Detects browser/OS language and returns "es" or "en". */
@@ -16,7 +16,14 @@ function getInitialLang(): Lang {
 }
 
 export function useLanguage() {
-  const [lang, setLangState] = useState<Lang>(getInitialLang);
+  // Deterministic Spanish HTML for prerendering and the first hydration render.
+  const [lang, setLangState] = useState<Lang>("es");
+  useEffect(() => {
+    setLangState(getInitialLang());
+  }, []);
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
 
   const setLang = useCallback((l: Lang) => {
     setLangState(l);
