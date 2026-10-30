@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, MotionConfig, useReducedMotion, useScroll, useTransform, useMotionValueEvent, useMotionValue } from "framer-motion";
 import { ArrowDown, ArrowUpRight, Github, Linkedin, Instagram, Mail } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 import ScrollScene from "@/components/ScrollScene";
 import ProjectDoodle from "@/components/ProjectDoodle";
 import BeneathCursor from "@/components/BeneathCursor";
@@ -21,6 +22,7 @@ function ProjectList() {
   const [previewProject, setPreviewProject] = useState<string | null>(null);
   const previewX = useMotionValue(0);
   const previewY = useMotionValue(0);
+  const mobile = useIsMobile(701);
   const duration = reduced ? 0 : 0.25;
   const desktop = () => window.matchMedia("(min-width: 701px) and (hover: hover) and (pointer: fine)").matches;
   const positionPreview = (x: number, y: number) => {
@@ -53,7 +55,7 @@ function ProjectList() {
             }}
             onBlur={() => setPreviewProject(null)}>
             <motion.span className="project-name" initial={reduced ? false : { opacity: 0, y: 22 }}
-              whileInView={{ opacity: 1, y: 0 }} viewport={{ amount: 0.1, margin: "0px 0px -20px 0px" }}
+              whileInView={{ opacity: 1, y: 0 }} viewport={{ once: mobile, amount: 0.1, margin: mobile ? "0px" : "0px 0px -20px 0px" }}
               animate={{ opacity: reduced ? 1 : 0, y: reduced ? 0 : 22 }}
               transition={{ duration: reduced ? 0 : 0.45, ease: [0.22, 1, 0.36, 1] }}>{project.name}</motion.span>
           </button></h3>
@@ -104,19 +106,22 @@ export default function Portfolio() {
   const heroRef = useRef<HTMLDivElement>(null);
   const glyphRef = useRef<SVGTSpanElement>(null);
   const reduced = useReducedMotion();
+  const mobile = useIsMobile(701);
+  const zoomEnd = mobile ? 0.66 : 0.88;
   const [frame, setFrame] = useState({ width: 1000, height: 700, x: 440, y: 350 });
   const { scrollYProgress: heroProgress } = useScroll({ target: sceneRef, offset: ["start start", "end end"] });
   const heroOpacity = useTransform(heroProgress, [0, 0.13], [1, 0]);
   const contentVisibility = useTransform(heroProgress, value => value >= 0.13 ? "hidden" : "visible");
-  const vectorVisibility = useTransform(heroProgress, value => value >= 0.88 ? "hidden" : "visible");
-  const arrivalOpacity = useTransform(heroProgress, [0.88, 0.98], [0, 1]);
+  const vectorVisibility = useTransform(heroProgress, value => value >= zoomEnd ? "hidden" : "visible");
+  const arrivalOpacity = useTransform(heroProgress, value =>
+    Math.min(1, Math.max(0, (value - zoomEnd) / ((mobile ? 0.8 : 0.98) - zoomEnd))));
   const rotationRef = useRef<SVGGElement>(null);
   useMotionValueEvent(heroProgress, "change", value => {
     const angle = reduced ? 0 : -7 * Math.min(value / 0.45, 1);
     rotationRef.current?.setAttribute("transform", `rotate(${angle} ${frame.x} ${frame.y})`);
   });
   const viewBox = useTransform(heroProgress, value => {
-    const p = reduced ? 0 : Math.min(value / 0.88, 1);
+    const p = reduced ? 0 : Math.min(value / zoomEnd, 1);
     const scale = Math.exp(p * Math.log(180));
     const width = frame.width / scale;
     const height = frame.height / scale;
